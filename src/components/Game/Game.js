@@ -4,9 +4,14 @@ import { useState, useEffect, useRef } from 'react'
 import randomWords from 'random-words'
 import { Player } from '@lottiefiles/react-lottie-player';
 
-const NUMB_OF_WORDS = 50
+// var NUMB_OF_WORDS
 const SECONDS = 60
 // let error = 0
+let niv
+
+// let niveaux = false;
+
+
 
 let keys = document.querySelectorAll('.keyboard_wrapper .key .row span'),
     keyPad = document.querySelector('.keyboard_wrapper .key'),
@@ -50,6 +55,48 @@ const Game = () => {
     const [status, setStatus] = useState("waiting")
     const textInput = useRef(null)
     const [errorr, setErrorr] = useState(0)
+    const [niveau, setNiveau] = useState(false)
+    const [number, setNumber] = useState();
+    const [quelNiveau, setQuelNiveau] = useState("");
+
+
+    function changeSizeWord1() {
+
+        // niveaux = true
+        setNiveau(true)
+        // niv = 1
+        setNumber(50)
+
+
+        let niv1 = true
+        setQuelNiveau("un")
+
+    }
+    function changeSizeWord2() {
+        // niv = 2
+
+        setNiveau(true)
+        // return NUMB_OF_WORDS = 70
+        setNumber(70)
+
+        setQuelNiveau("deux")
+        let niv2 = true
+
+
+
+    }
+    function changeSizeWord3() {
+        // niv = 3
+
+        setNiveau(true)
+        // return NUMB_OF_WORDS = 100
+        setNumber(100)
+        console.log(number)
+        let niv3 = true
+        setQuelNiveau("trois")
+    }
+
+
     useEffect(() => {
         setWords(generateWords())
     }, [])
@@ -61,7 +108,23 @@ const Game = () => {
     }, [status])
 
     function generateWords() {
-        return new Array(NUMB_OF_WORDS).fill(null).map(() => randomWords())
+
+
+        if (quelNiveau === 'un') {
+
+            return new Array(20).fill(null).map(() => randomWords())
+        }
+        else if (quelNiveau === 'deux') {
+            return new Array(80).fill(null).map(() => randomWords())
+
+        }
+        else {
+            return new Array(10).fill(null).map(() => randomWords())
+
+        }
+
+
+
     }
     function hidde() {
         document.querySelector('.btn_begin').style.display = 'none';
@@ -98,6 +161,7 @@ const Game = () => {
         }
 
     }
+
 
     function handleKeyDown({ keyCode, key }) {
         // space bar 
@@ -149,14 +213,72 @@ const Game = () => {
 
             <div className='contain_game'>
 
-                <div className="contain_anime">
-                    {/* <lottie-player id="firstLottie" src="https://assets3.lottiefiles.com/packages/lf20_O2ci8jA9QF.json" style="width:400px; height: 400px;">"></lottie-player> */}
 
-                    {/* <iframe src="https://embed.lottiefiles.com/animation/125746"></iframe> */}
-                    <Player src='https://assets3.lottiefiles.com/packages/lf20_O2ci8jA9QF.json' loop autoplay style={{ height: '400px', width: '300px' }} />
+                {niveau === false && (
 
-                    <div className='btn_anime'><button className='btn_begin' onClick={start}  >commencer</button></div>
-                </div>
+                    <div className="contain_niveaux">
+                        <div className=" niveau niveau_facile" onClick={changeSizeWord1}>
+
+
+                            <div className="img_niveau">
+                                <span>1</span>
+
+                            </div>
+
+                            <div className="footer_niveau">
+                                <h2>Niveau facile</h2>
+
+                            </div>
+
+                        </div>
+                        <div className=" niveau niveau_moyen" onClick={changeSizeWord2}>
+
+
+                            <div className="img_niveau">
+                                <span>2</span>
+
+                            </div>
+
+                            <div className="footer_niveau">
+                                <h2>Niveau moyen</h2>
+
+                            </div>
+
+                        </div>
+                        <div className=" niveau niveau_difficil" onClick={changeSizeWord3}>
+
+
+                            <div className="img_niveau">
+                                <span>3</span>
+
+                            </div>
+
+                            <div className="footer_niveau">
+                                <h2>Niveau difficil</h2>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                )}
+
+
+                {niveau === true && (
+                    <div className="contain_anime">
+                        {/* <lottie-player id="firstLottie" src="https://assets3.lottiefiles.com/packages/lf20_O2ci8jA9QF.json" style="width:400px; height: 400px;">"></lottie-player> */}
+
+                        {/* <iframe src="https://embed.lottiefiles.com/animation/125746"></iframe> */}
+                        <Player src='https://assets3.lottiefiles.com/packages/lf20_O2ci8jA9QF.json' loop autoplay style={{ height: '400px', width: '300px' }} />
+
+                        <div className='btn_anime'><button className='btn_begin' onClick={start}  >commencer</button></div>
+                    </div>
+
+                )}
+
+
+
 
                 {status === 'finished' && (
                     <div className="contain_finish">
@@ -181,13 +303,23 @@ const Game = () => {
                                 </li>
                             </ul>
                         </div>
+                        <div className="contain_btn_fin">
+
+
+                            <button className='btn_fin' onClick={start} >Relancer</button>
+
+
+                        </div>
 
                     </div>
 
                 )}
 
 
-                {status === 'started' && (
+
+
+
+                {status === 'started' && niveau && (
 
                     <div class="keyboard_wrapper">
                         <div class="display">
@@ -277,7 +409,7 @@ const Game = () => {
 
             </div>
 
-            {status === 'started' && (
+            {status === 'started' && niveau && (
 
 
                 <div className='contain_Rightbar'>

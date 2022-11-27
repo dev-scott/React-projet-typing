@@ -6,6 +6,10 @@ import Game from "./components/Game/Game";
 import Leftbar from "./components/Leftbar";
 import Navbar from "./components/Navbar";
 import Rightbar from "./components/Rightbar/Rightbar";
+import { Routes , Route } from "react-router-dom";
+import Historique from "./components/Historique/Historique";
+import Setting from "./components/Setting/Setting";
+import Logout from "./components/Logout/Logout";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -23,10 +27,19 @@ const App = () => {
       <Navbar />
       <Grid container>
         <Grid item sm={2} xs={2}>
+
           <Leftbar />
         </Grid>
         <Grid item sm={10} xs={10}>
-          <Game/>
+          <Routes>
+            <Route path="/" element={<Game/>} />
+            <Route path="/historique" element={<Historique/>} />
+            <Route path="/setting" element={<Setting/>} />
+            <Route path="/logout" element={<Logout/>} />
+
+
+
+          </Routes>
         </Grid>
      
       </Grid>

@@ -1,4 +1,5 @@
 import { Container, makeStyles, Typography } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import {
   Bookmark,
   List,
@@ -55,21 +56,21 @@ const Leftbar = () => {
     <Container className={classes.container}>
       <div className={classes.item}>
         <Home className={classes.icon} />
-        <Typography className={classes.text}>Homepage</Typography>
+        <Typography className={classes.text}> <Link to='/'> Homepage </Link> </Typography>
       </div>
       <div className={classes.item}>
         <Person className={classes.icon} />
-        <Typography className={classes.text}>Historique</Typography>
+        <Typography className={classes.text}> <Link to='historique'> Historique </Link> </Typography>
       </div>
    
     
       <div className={classes.item}>
         <Settings className={classes.icon} />
-        <Typography className={classes.text}>Settings</Typography>
+        <Typography className={classes.text}> <Link to='setting'>  Settings </Link> </Typography>
       </div>
       <div className={classes.item}>
         <ExitToApp className={classes.icon} />
-        <Typography className={classes.text}>Logout</Typography>
+        <Typography className={classes.text}> <Link to='logout'> Logout  </Link> </Typography>
       </div>
     </Container>
   );

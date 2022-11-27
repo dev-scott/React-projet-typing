@@ -251,13 +251,97 @@ body {
     width: 100%;
     height: 100%;
     // background-color: red;
-    z-index: 600;
+    z-index: 800;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 
 }
+
+.contain_niveaux {
+    width: 100%;
+    height: 100%;
+    // background-color: red;
+    z-index: 600;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+
+    .niveau {
+
+        width: 30%;
+        height: 80%;
+        // background-color: blue;
+        border-radius: 5px;
+
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        // font-size: 100px;
+        cursor: pointer;
+
+        .img_niveau {
+            height: 90%;
+            width: 100%;
+            background-color: black;
+
+            position: relative;
+
+            span {
+
+                top: 5%;
+                left: 5%;
+                position: absolute;
+                border-radius: 50%;
+                width: 90px;
+                height: 90px;
+                background-color: rgb(33, 131, 223);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: #ffff;
+
+
+
+            }
+
+        }
+
+        .footer_niveau {
+
+            width: 100%;
+            height: 10%;
+            background-color: rgb(33, 131, 223);
+            color: #ffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 13px;
+
+        }
+    }
+
+    .niveau_facile {
+
+        background-color: red;
+    }
+
+    .niveau_moyen {
+
+        background-color: blue;
+
+    }
+
+    .niveau_difficil {
+        background-color: yellow;
+    }
+
+}
+
 
 .contain_finish {
     width: 100%;
@@ -298,6 +382,37 @@ body {
         }
     }
 
+
+
+    .contain_btn_fin {
+
+        width: 100%;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .btn_fin {
+
+            width: 200px;
+            height: 40px;
+
+            color: #ffff;
+            background-color: rgb(24, 152, 199);
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            transition: 0.2s all ease;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgb(8, 55, 108);
+                color: #ffff;
+            }
+
+        }
+
+    }
 
 }
 
